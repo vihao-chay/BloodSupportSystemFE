@@ -1,20 +1,22 @@
 import React from "react";
 import { FaHospital, FaTruck, FaBuilding, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const Homepage = () => {
+  const navigate = useNavigate();
   const donationMethods = [
     {
       title: "Direct Hospital Donation",
-      icon: <FaHospital className="text-4xl text-primary mb-4" />,
+      icon: <FaHospital className="text-4xl text-primary text-red-600 mb-4" />,
       description: "Visit your nearest hospital to donate blood directly."
     },
     {
       title: "Mobile Blood Donation Camps",
-      icon: <FaTruck className="text-4xl text-primary mb-4" />,
+      icon: <FaTruck className="text-4xl text-primary text-red-600 mb-4" />,
       description: "Find mobile camps in your area for convenient donation."
     },
     {
       title: "Community Donation Centers",
-      icon: <FaBuilding className="text-4xl text-primary mb-4" />,
+      icon: <FaBuilding className="text-4xl text-primary text-red-600 mb-4" />,
       description: "Dedicated centers for safe and efficient blood donation."
     }
   ];
@@ -39,34 +41,52 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-card shadow-sm py-1 px-6 flex items-center justify-between">
+      <header className="bg-card shadow-sm py-0 px-6 flex items-center justify-between">
         <div className="flex items-center">
           <img
             src="https://www.shutterstock.com/image-vector/blood-donation-logo-design-vector-600nw-2233019493.jpg"
             alt="Blood Drop Logo"
-            className="h-40 w-40 object-contain"
+            className="h-20 w-40 object-contain"
           />
         </div>
         <h1 className="text-3xl md:text-4xl font-bold text-center text-red-600">
           LifeStream: Connecting Donors, Saving Lives
         </h1>
-        <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-semibold transition duration-300">
+        <button className="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-semibold transition duration-300"
+        onClick={() => navigate("/login")}>
           Login
         </button>
       </header>
 
-      <nav className="bg-red-600 shadow-sm py-6">
+      <nav className="bg-red-600 shadow-sm py-3">
         <ul className="flex justify-between max-w-6xl mx-auto px-6 text-white font-semibold text-xl">
-          {["New", "Home", "About Us", "Find Blood"].map((item) => (
-            <li
-              key={item}
-              className="cursor-pointer hover:text-primary hover:border-b-2 hover:border-primary transition-all"
-            >
-              {item}
-            </li>
-          ))}
+          <li
+            className="cursor-pointer hover:text-primary hover:border-b-2 hover:border-primary transition-all"
+            onClick={() => navigate("/news")}
+          >
+            New
+          </li>
+          <li
+            className="cursor-pointer hover:text-primary hover:border-b-2 hover:border-primary transition-all"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </li>
+          <li
+            className="cursor-pointer hover:text-primary hover:border-b-2 hover:border-primary transition-all"
+            onClick={() => navigate("/about-us")}
+          >
+            About Us
+          </li>
+          <li
+            className="cursor-pointer hover:text-primary hover:border-b-2 hover:border-primary transition-all"
+            onClick={() => navigate("/find-blood")}
+          >
+            Find Blood
+          </li>
         </ul>
       </nav>
+
 
       <section className="bg-[#FAFAFB] w-full px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
         <div className="flex justify-center ">
